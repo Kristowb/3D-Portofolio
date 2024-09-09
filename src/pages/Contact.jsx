@@ -21,7 +21,7 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
-    setCurrentAnimation("hit");
+    setCurrentAnimation("hit"); // Start 'hit' animation
 
     emailjs
       .send(
@@ -39,27 +39,26 @@ const Contact = () => {
       .then(() => {
         setIsLoading(false);
 
-        //Show Message Alert
+        // Show Message Alert
         showAlert({
           show: true,
           text: "Message sent successfully!",
           type: "success",
         });
 
-        // Hide an alert
+        // Hide an alert and reset animation to idle
         setTimeout(() => {
           hideAlert();
-          setCurrentAnimation("idle");
+          setCurrentAnimation("idle"); // Switch back to idle animation after 3 seconds
           setForm({ name: "", email: "", message: "" });
-        }, [3000]);
+        }, 3000); // No need for square brackets
       })
       .catch((error) => {
         setIsLoading(false);
-        setCurrentAnimation("idle");
-        // Show error message
+        setCurrentAnimation("idle"); // Reset to idle if there's an error
         showAlert({
           show: true,
-          text: "I didnt receive your message",
+          text: "I didn't receive your message",
           type: "danger",
         });
       });
