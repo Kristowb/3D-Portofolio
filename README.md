@@ -12,6 +12,5 @@ Configuration Setup
 - npm run dev
 
 Or just 
-- npm install tailwindcss
-- npm install autoprefixer
+- npm audit fix
 - npm run dev
